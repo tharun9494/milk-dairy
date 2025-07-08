@@ -1,7 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useAuth } from './hooks/useAuth';
-import LandingPage from './pages/LandingPage';
+import HomePage from './pages/HomePage';
+import AboutPage from './pages/AboutPage';
+import WhyChooseUsPage from './pages/WhyChooseUsPage';
+import ContactPage from './pages/ContactPage';
+import PricingPage from './pages/PricingPage';
+import CartPage from './pages/CartPage';
 import UserDashboard from './pages/UserDashboard';
 import AdminDashboard from './pages/AdminDashboard';
 import { Milk } from 'lucide-react';
@@ -27,7 +32,12 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/cart" element={<CartPage />} />
         <Route path="/dashboard" element={<UserDashboard />} />
         <Route path="/admin" element={<AdminDashboard />} />
       </Routes>

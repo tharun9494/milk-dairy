@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import { 
@@ -19,11 +19,14 @@ import {
   Truck,
   BarChart3
 } from 'lucide-react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 const AdminDashboard: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('overview');
+  const [totalCustomers, setTotalCustomers] = useState<number>(0);
 
   // Mock data
   const stats = {
@@ -70,6 +73,20 @@ const AdminDashboard: React.FC = () => {
 
   // Check if user is admin
   const isAdmin = user?.email === 'ontimittatharun2002@gmail.com' || user?.email?.includes('admin');
+
+  // Fetch total customers from Firestore
+  useEffect(() => {
+    const fetchTotalCustomers = async () => {
+      try {
+        const usersRef = collection(db, 'users');
+        const usersSnapshot = await getDocs(usersRef);
+        setTotalCustomers(usersSnapshot.size);
+      } catch (err) {
+        console.error('Error fetching total customers:', err);
+      }
+    };
+    fetchTotalCustomers();
+  }, []);
 
   if (!user || !isAdmin) {
     navigate('/');
@@ -181,7 +198,7 @@ const AdminDashboard: React.FC = () => {
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="text-sm text-gray-600">Total Customers</p>
-                        <p className="text-2xl font-bold text-gray-900">{stats.totalCustomers}</p>
+                        <p className="text-2xl font-bold text-gray-900">{totalCustomers}</p>
                       </div>
                       <Users className="h-8 w-8 text-blue-600" />
                     </div>

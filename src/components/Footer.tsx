@@ -1,5 +1,7 @@
 import React from 'react';
 import { Milk } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import logo from '../images/logo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -8,9 +10,9 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <Milk className="h-8 w-8 text-green-400" />
+              <img src={logo} alt="Pitta's Organic Dairy" className="h-25 w-20 object-contain" />
               <div>
-                <h3 className="text-xl font-bold">Pitta's Organic Dairy</h3>
+                <h3 className="text-xl font-bold">Kishan Organic Milk</h3>
                 <p className="text-sm text-green-400">Fresh. Pure. Delivered to Your Door.</p>
               </div>
             </div>
@@ -22,21 +24,21 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <div className="space-y-2">
-              <a href="#home" className="block text-gray-400 hover:text-white transition-colors">Home</a>
-              <a href="#about" className="block text-gray-400 hover:text-white transition-colors">About Us</a>
-              <a href="#products" className="block text-gray-400 hover:text-white transition-colors">Products</a>
-              <a href="#delivery" className="block text-gray-400 hover:text-white transition-colors">Delivery</a>
-              <a href="#contact" className="block text-gray-400 hover:text-white transition-colors">Contact</a>
+              <Link to="/" className="block text-gray-400 hover:text-white transition-colors">Home</Link>
+              <Link to="/about" className="block text-gray-400 hover:text-white transition-colors">About Us</Link>
+              <Link to="/products" className="block text-gray-400 hover:text-white transition-colors">Products</Link>
+              <Link to="/delivery" className="block text-gray-400 hover:text-white transition-colors">Delivery</Link>
+              <Link to="/contact" className="block text-gray-400 hover:text-white transition-colors">Contact</Link>
             </div>
           </div>
 
           <div>
             <h4 className="text-lg font-semibold mb-4">Products</h4>
             <div className="space-y-2">
-              <a href="#" className="block text-gray-400 hover:text-white transition-colors">Fresh Organic Milk</a>
-              <a href="#" className="block text-gray-400 hover:text-white transition-colors">A2 Desi Cow Ghee</a>
-              <a href="#" className="block text-gray-400 hover:text-white transition-colors">Thick Homemade Curd</a>
-              <a href="#" className="block text-gray-400 hover:text-white transition-colors">Subscription Plans</a>
+              <Link to="/products" className="block text-gray-400 hover:text-white transition-colors">Fresh Organic Milk</Link>
+              <Link to="/products" className="block text-gray-400 hover:text-white transition-colors">A2 Desi Cow Ghee</Link>
+              <Link to="/products" className="block text-gray-400 hover:text-white transition-colors">Thick Homemade Curd</Link>
+              <Link to="/delivery" className="block text-gray-400 hover:text-white transition-colors">Subscription Plans</Link>
             </div>
           </div>
 

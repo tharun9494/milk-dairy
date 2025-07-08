@@ -1,19 +1,12 @@
 import React, { useState } from 'react';
 import AuthModal from '../components/AuthModal';
 import Navigation from '../components/Navigation';
-import HeroSection from '../components/HeroSection';
-import AboutSection from '../components/AboutSection';
-import ProductsSection from '../components/ProductsSection';
-import DeliverySection from '../components/DeliverySection';
-import WhyChooseUsSection from '../components/WhyChooseUsSection';
 import ContactSection from '../components/ContactSection';
 import Footer from '../components/Footer';
 import { useAuth } from '../hooks/useAuth';
-import { products } from '../data/products';
 import { useNavigate } from 'react-router-dom';
 
-const LandingPage: React.FC = () => {
-  const [selectedProduct, setSelectedProduct] = useState('milk');
+const ContactPage: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authMode, setAuthMode] = useState<'login' | 'signup'>('login');
@@ -65,21 +58,6 @@ const LandingPage: React.FC = () => {
         handleOrderNow={handleOrderNow}
       />
 
-      <HeroSection handleOrderNow={handleOrderNow} />
-      
-      <AboutSection />
-      
-      <ProductsSection
-        selectedProduct={selectedProduct}
-        setSelectedProduct={setSelectedProduct}
-        products={products}
-        handleOrderNow={handleOrderNow}
-      />
-      
-      <DeliverySection />
-      
-      <WhyChooseUsSection />
-      
       <ContactSection
         formData={formData}
         handleInputChange={handleInputChange}
@@ -98,4 +76,4 @@ const LandingPage: React.FC = () => {
   );
 };
 
-export default LandingPage;
+export default ContactPage; 
